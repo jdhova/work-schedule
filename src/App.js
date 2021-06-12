@@ -4,7 +4,7 @@ import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import './App.css';
 
 function App() {
-  const [name, setName] = useState(['kjsksksk']);
+  const [name, setName] = useState(['lets see']);
   return (
     <div className='App'>
       <div className='main'>
