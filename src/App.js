@@ -1,14 +1,24 @@
 import React, { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
+import Header from './header';
+
 import './App.css';
 
 function App() {
-  const [name, setName] = useState(['lets see']);
+  const [names, setNames] = useState([
+    'jude',
+    'obum',
+    'grace',
+    'don',
+    //{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
+    //{ firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' },
+  ]);
   return (
     <div className='App'>
       <div className='main'>
         <>
+          <Header names={names} />
           <Container>
             <Form>
               <Row>
