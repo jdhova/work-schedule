@@ -7,12 +7,12 @@ import './App.css';
 
 function App() {
   const [names, setNames] = useState([
-    'jude',
-    'obum',
-    'grace',
-    'don',
-    //{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
-    //{ firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' },
+    // 'jude',
+    // 'obum',
+    // 'grace',
+    // 'don',
+    { firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
+    { firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' },
   ]);
   return (
     <div className='App'>
@@ -70,20 +70,57 @@ function App() {
               </Row>
 
               <Row>
-                <Col lg={4} md={6} sm={8}>
-                  <Form.Group controlId='exampleForm.ControlTextarea1'>
+                <Col lg={3} md={4} sm={5}>
+                  <Form.Group controlId='formBasicEmail'>
                     <Form.Label>Responsibilities</Form.Label>
-                    <Form.Control
-                      as='textarea'
-                      rows='3'
-                      name='address'
-                      //onChange={this.handleInputChange}
-                    />
+                    <Form.Control type='text' placeholder='Roles' />
+                    <Form.Text className='text-muted'></Form.Text>
+                  </Form.Group>
+                </Col>
+
+                <Col lg={3} md={4} sm={5}>
+                  <Form.Group controlId='formBasicEmail'>
+                    <Form.Label>Responsibilities</Form.Label>
+                    <Form.Control type='text' placeholder='Roles' />
+                    <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
                 </Col>
               </Row>
+
+              <Row>
+                <Col lg={3} md={4} sm={5}>
+                  <Form.Group controlId='formBasicEmail'>
+                    <Form.Control type='texxt' placeholder='Roles' />
+                    <Form.Text className='text-muted'></Form.Text>
+                  </Form.Group>
+                </Col>
+
+                <Col lg={3} md={4} sm={5}>
+                  <Form.Group controlId='formBasicEmail'>
+                    <Form.Control type='text' placeholder='Roles' />
+                    <Form.Text className='text-muted'></Form.Text>
+                  </Form.Group>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col lg={3} md={4} sm={5}>
+                  <Form.Group controlId='formBasicEmail'>
+                    <Form.Control type='text' placeholder='Roles' />
+                    <Form.Text className='text-muted'></Form.Text>
+                  </Form.Group>
+                </Col>
+
+                <Col lg={3} md={4} sm={5}>
+                  <Form.Group controlId='formBasicEmail'>
+                    <Form.Control type='texxt' placeholder='Roles' />
+                    <Form.Text className='text-muted'></Form.Text>
+                  </Form.Group>
+                </Col>
+              </Row>
+
               <Button variant='primary' type='submit'>
-                Submit Enter
+                Submit
               </Button>
             </Form>
           </Container>

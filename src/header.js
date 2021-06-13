@@ -5,7 +5,7 @@ const Header = ({ names }) => {
   return (
     <div>
       {names.map((name) => {
-        return <Name name={name} />;
+        return <Name key={name} name={name} />;
       })}
       {/* <h3>hello world</h3> */}
     </div>
