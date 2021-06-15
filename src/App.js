@@ -6,27 +6,38 @@ import { useForm } from 'react-hook-form';
 import './App.css';
 
 function App() {
-  const [names, setNames] = useState(
+  const [names, setAllValues] = useState([
     {
-      name: '',
-      position: '',
+      name: 'John',
+      position: 'ddd',
       date: '',
       from: '',
-      to: '',
-    }
+      task1: '',
+      task2: '',
+      task3: '',
+      task4: '',
+      task5: '',
+      task6: '',
+    },
+  ]);
+  //[{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }];
 
-    // 'jude',
-    // 'obum',
-    // 'grace',
-    // 'don',
-    //{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
-    //{ firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' },
-  );
+  // 'jude',
+  // 'obum',
+  // 'grace',
+  // 'don',
+  // { firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
+  //{ firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' }
 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+  };
+
+  const changeHandler = (e) => {
+    console.log('eeeeee');
+    //setAllValues({ ...allValues, [e.target.name]: e.target.value });
   };
 
   return (
@@ -46,6 +57,7 @@ function App() {
                       placeholder='Enter Name'
                       name='name'
                       {...register('name', { required: true })}
+                      onChange={changeHandler}
                     />
 
                     <Form.Text className='text-muted'></Form.Text>
@@ -64,6 +76,7 @@ function App() {
                       name='position'
                       {...register('position', { required: true })}
                       //ref={register}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -80,6 +93,7 @@ function App() {
                       placeholder='Enter Date'
                       name='date'
                       {...register('date', { required: true })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -96,6 +110,7 @@ function App() {
                       placeholder='From - To'
                       name='from'
                       {...register('from', { required: true })}
+                      onChange={changeHandler}
                     />
 
                     <Form.Text className='text-muted'></Form.Text>
@@ -111,6 +126,7 @@ function App() {
                       placeholder='From - To'
                       name='to'
                       {...register('to', { required: true })}
+                      onChange={changeHandler}
                     />
 
                     <Form.Text className='text-muted'></Form.Text>
@@ -128,6 +144,7 @@ function App() {
                       placeholder='Task 1'
                       name='task1'
                       {...register('task1', { required: true })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -142,6 +159,7 @@ function App() {
                       placeholder='Task 2'
                       name='task2'
                       {...register('task2', { required: false })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -157,6 +175,7 @@ function App() {
                       placeholder='Task 3'
                       name='task3'
                       {...register('task3', { required: false })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -170,6 +189,7 @@ function App() {
                       placeholder='Task 4'
                       name='task4'
                       {...register('task4', { required: false })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -185,6 +205,7 @@ function App() {
                       placeholder='Task 5'
                       name='task5'
                       {...register('task5', { required: false })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -198,6 +219,7 @@ function App() {
                       placeholder='Task 6'
                       name='task6'
                       {...register('task6', { required: false })}
+                      onChange={changeHandler}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
