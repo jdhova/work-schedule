@@ -6,16 +6,24 @@ import { useForm } from 'react-hook-form';
 import './App.css';
 
 function App() {
-  const [names, setNames] = useState([
+  const [names, setNames] = useState(
+    {
+      name: '',
+      position: '',
+      date: '',
+      from: '',
+      to: '',
+    }
+
     // 'jude',
     // 'obum',
     // 'grace',
     // 'don',
     //{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
     //{ firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' },
-  ]);
+  );
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -39,6 +47,7 @@ function App() {
                       name='name'
                       {...register('name', { required: true })}
                     />
+
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
                 </Col>
@@ -132,7 +141,7 @@ function App() {
                       type='text'
                       placeholder='Task 2'
                       name='task2'
-                      {...register('task2', { required: true })}
+                      {...register('task2', { required: false })}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -147,7 +156,7 @@ function App() {
                       type='text'
                       placeholder='Task 3'
                       name='task3'
-                      {...register('task3', { required: true })}
+                      {...register('task3', { required: false })}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -160,7 +169,7 @@ function App() {
                       type='text'
                       placeholder='Task 4'
                       name='task4'
-                      {...register('task4', { required: true })}
+                      {...register('task4', { required: false })}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -175,7 +184,7 @@ function App() {
                       type='text'
                       placeholder='Task 5'
                       name='task5'
-                      {...register('task5', { required: true })}
+                      {...register('task5', { required: false })}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
@@ -188,7 +197,7 @@ function App() {
                       type='text'
                       placeholder='Task 6'
                       name='task6'
-                      {...register('task6', { required: true })}
+                      {...register('task6', { required: false })}
                     />
                     <Form.Text className='text-muted'></Form.Text>
                   </Form.Group>
