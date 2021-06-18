@@ -6,10 +6,10 @@ import { useForm } from 'react-hook-form';
 import './App.css';
 
 function App() {
-  const [names, setAllValues] = useState([
+  const [allValues, setAllValues] = useState([
     {
-      name: 'John',
-      position: 'ddd',
+      name: '',
+      position: '',
       date: '',
       from: '',
       task1: '',
@@ -20,31 +20,36 @@ function App() {
       task6: '',
     },
   ]);
-  //[{ firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' }];
-
-  // 'jude',
-  // 'obum',
-  // 'grace',
-  // 'don',
-  // { firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue' },
-  //{ firstName: 'Juud', lastName: 'cole', age: 40, eyeColor: 'grlue' }
 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log('im in', data);
+
+    setAllValues([
+      {
+        name: data.name,
+        position: data.position,
+      },
+    ]);
   };
 
   const changeHandler = (e) => {
     console.log('eeeeee');
-    //setAllValues({ ...allValues, [e.target.name]: e.target.value });
+    setAllValues([
+      {
+        name: 'name',
+        position: 'position',
+      },
+    ]);
+    //  why does ths work as an object in an array?
   };
 
   return (
     <div className='App'>
       <div className='main'>
         <>
-          <Header names={names} />
+          <Header allValues={allValues} />
           <Container>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Row>

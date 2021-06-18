@@ -1,11 +1,11 @@
 import React from 'react';
 import Name from './components/Name';
 
-const Header = ({ names }) => {
+const Header = ({ allValues }) => {
   return (
     <div>
-      {names.map((name) => {
-        return <Name key={name} name={name} />;
+      {allValues.map((singleValue) => {
+        return <Name key={singleValue} singleValue={singleValue} />;
       })}
       {/* <h3>hello world</h3> */}
     </div>
