@@ -4,14 +4,16 @@ import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import Header from './header';
 import { useForm } from 'react-hook-form';
 import './App.css';
+//import Employee from './employee';
 
-function App() {
+const App = () => {
   const [allValues, setAllValues] = useState([
     {
       name: '',
       position: '',
       date: '',
       from: '',
+      to: '',
       task1: '',
       task2: '',
       task3: '',
@@ -25,23 +27,54 @@ function App() {
 
   const onSubmit = (data) => {
     console.log('im in', data);
-
-    setAllValues([
-      {
-        name: data.name,
-        position: data.position,
-      },
-    ]);
+    if (data !== '') {
+      setAllValues([
+        {
+          /// ...allValues,
+          name: data.name,
+          position: data.position,
+          date: data.date,
+          from: data.from,
+          to: data.to,
+          task1: data.task1,
+          task2: data.task2,
+          task3: data.task3,
+          task4: data.task4,
+          task5: data.task5,
+          task6: data.task6,
+        },
+      ]);
+    } else {
+      setAllValues([
+        {
+          name: data.name,
+        },
+      ]);
+    }
   };
 
   const changeHandler = (e) => {
     console.log('eeeeee');
-    setAllValues([
-      {
-        name: 'name',
-        position: 'position',
-      },
-    ]);
+    // clear the  history of unchange....
+    //... we use the ...allValues to add more staffs..
+    //1 create UI 2 add more staffs 3. clear state after adding
+
+    // setAllValues([
+    //   {
+    //     name: data.name,
+    //     position: data.position,
+    //     date: data.date,
+    //     from: data.from,
+    //     to: data.to,
+    //     task1: data.task1,
+    //     task2: data.task2,
+    //     task3: data.task3,
+    //     task4: data.task4,
+    //     task5: data.task5,
+    //     task6: data.task6,
+    //   },
+    // ]);
+
     //  why does ths work as an object in an array?
   };
 
@@ -49,8 +82,14 @@ function App() {
     <div className='App'>
       <div className='main'>
         <>
-          <Header allValues={allValues} />
-          <Container>
+          {/* <Employee
+            allValues={allValues}
+            onSubmit={onSubmit}
+            //onChange={onChange}
+            changeHandler={changeHandler}
+          /> */}
+
+          <Container classname='main'>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Row>
                 <Col lg={4} md={6} sm={8}>
@@ -239,11 +278,12 @@ function App() {
                 Submit
               </Button>
             </Form>
+            <Header allValues={allValues} />
           </Container>
         </>
       </div>
     </div>
   );
-}
+};
 
 export default App;
