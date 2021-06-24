@@ -3,8 +3,7 @@ import React from 'react';
 const Name = ({ singleValue }) => {
   return (
     <div>
-      jsjjsjss sjsjsjsjs
-      <h3>jsjsjsjjs</h3>
+      <h3>info</h3>
       {singleValue.name}
       <br></br>
       {singleValue.position}
