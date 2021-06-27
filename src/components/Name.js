@@ -5,34 +5,27 @@ import { Form, Button, Col, Container, Row, Table } from 'react-bootstrap';
 const Name = ({ singleValue }) => {
   return (
     <div>
-      <h3>Employee Task</h3>
+      <h3>{singleValue.name}</h3>
 
       <Table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>{singleValue.position}</th>
+            <th>{singleValue.date}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>Main Task:</td>
+            <td>{singleValue.task1}</td>
+            <td>{singleValue.task2}</td>
+            <td>{singleValue.task3}</td>
           </tr>
           <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan='2'>Larry the Bird</td>
-            <td>@twitter</td>
+            <td>Seconday Task:</td>
+            <td>{singleValue.task4}</td>
+            <td>{singleValue.task5}</td>
+            <td>{singleValue.task6}</td>
           </tr>
         </tbody>
       </Table>

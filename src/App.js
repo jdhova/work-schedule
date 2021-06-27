@@ -24,13 +24,37 @@ const App = () => {
   ]);
 
   const { register, handleSubmit, errors } = useForm();
+  //const todoData = useRef();
+
+  // const onSubmit = (data) => {
+  //   const datas = todoData.current.value;
+  //   console.log('im in', data);
+  //   if (data === '') return;
+  //   setAllValues([
+  //     {
+  //       /// ...allValues,
+  //       name: data.name,
+  //       position: data.position,
+  //       date: data.date,
+  //       from: data.from,
+  //       to: data.to,
+  //       task1: data.task1,
+  //       task2: data.task2,
+  //       task3: data.task3,
+  //       task4: data.task4,
+  //       task5: data.task5,
+  //       task6: data.task6,
+  //     },
+  //   ]);
+  // };
 
   const onSubmit = (data) => {
-    console.log('im in', data);
-    if (data !== '') {
-      setAllValues([
+    //const data = todoData.current.value;
+    if (data === '') return;
+    setAllValues((prevAllValues) => {
+      return [
+        ...prevAllValues,
         {
-          /// ...allValues,
           name: data.name,
           position: data.position,
           date: data.date,
@@ -43,14 +67,8 @@ const App = () => {
           task5: data.task5,
           task6: data.task6,
         },
-      ]);
-    } else {
-      setAllValues([
-        {
-          name: data.name,
-        },
-      ]);
-    }
+      ];
+    });
   };
 
   const changeHandler = (e) => {

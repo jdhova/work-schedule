@@ -4,6 +4,7 @@ import Name from './components/Name';
 const Header = ({ allValues }) => {
   return (
     <div>
+      <h2>Employee Responsilities</h2>
       {allValues.map((singleValue) => {
         return <Name key={singleValue} singleValue={singleValue} />;
       })}
