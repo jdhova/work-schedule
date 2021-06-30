@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Col, Container, Row } from 'react-bootstrap';
 import Header from './header';
 import { useForm } from 'react-hook-form';
 import './App.css';
 //import Employee from './employee';
+
+const LOCAL_STORAGE_KEY = 'empApp.allValues';
 
 const App = () => {
   const [allValues, setAllValues] = useState([
@@ -20,33 +22,27 @@ const App = () => {
       task4: '',
       task5: '',
       task6: '',
+      complete: false,
     },
   ]);
 
-  const { register, handleSubmit, errors } = useForm();
-  //const todoData = useRef();
+  const { register, handleSubmit } = useForm();
 
-  // const onSubmit = (data) => {
-  //   const datas = todoData.current.value;
-  //   console.log('im in', data);
-  //   if (data === '') return;
-  //   setAllValues([
-  //     {
-  //       /// ...allValues,
-  //       name: data.name,
-  //       position: data.position,
-  //       date: data.date,
-  //       from: data.from,
-  //       to: data.to,
-  //       task1: data.task1,
-  //       task2: data.task2,
-  //       task3: data.task3,
-  //       task4: data.task4,
-  //       task5: data.task5,
-  //       task6: data.task6,
-  //     },
-  //   ]);
-  // };
+  useEffect(() => {
+    const storedAllValues = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storedAllValues) setAllValues(storedAllValues);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(allValues));
+  }, [allValues]);
+
+  const toggleValues = (id) => {
+    const newValues = [...allValues];
+    const value = newValues.find((value) => value.id === id);
+    value.complete = !value.complete;
+    setAllValues(newValues);
+  };
 
   const onSubmit = (data) => {
     //const data = todoData.current.value;
@@ -96,17 +92,15 @@ const App = () => {
     //  why does ths work as an object in an array?
   };
 
+  // const clearValues = () => {
+  //   const newValues = allValues.filter((singleValue) => !singleValue.complete);
+  //   setAllValues(newValues);
+  // };
+
   return (
     <div className='App'>
       <div className='main'>
         <>
-          {/* <Employee
-            allValues={allValues}
-            onSubmit={onSubmit}
-            //onChange={onChange}
-            changeHandler={changeHandler}
-          /> */}
-
           <Container classname='main'>
             <Row>
               <Col>
@@ -205,7 +199,7 @@ const App = () => {
                         <Form.Control
                           input
                           type='text'
-                          placeholder='Task 1'
+                          placeholder='Primary Task'
                           name='task1'
                           {...register('task1', { required: true })}
                           onChange={changeHandler}
@@ -220,7 +214,7 @@ const App = () => {
                         <Form.Control
                           input
                           type='text'
-                          placeholder='Task 2'
+                          placeholder='Primary Task'
                           name='task2'
                           {...register('task2', { required: false })}
                           onChange={changeHandler}
@@ -236,7 +230,7 @@ const App = () => {
                         <Form.Control
                           input
                           type='text'
-                          placeholder='Task 3'
+                          placeholder='Primary Task'
                           name='task3'
                           {...register('task3', { required: false })}
                           onChange={changeHandler}
@@ -250,7 +244,7 @@ const App = () => {
                         <Form.Control
                           input
                           type='text'
-                          placeholder='Task 4'
+                          placeholder='Secondary Task'
                           name='task4'
                           {...register('task4', { required: false })}
                           onChange={changeHandler}
@@ -266,7 +260,7 @@ const App = () => {
                         <Form.Control
                           input
                           type='text'
-                          placeholder='Task 5'
+                          placeholder='Secondary Task'
                           name='task5'
                           {...register('task5', { required: false })}
                           onChange={changeHandler}
@@ -280,7 +274,7 @@ const App = () => {
                         <Form.Control
                           input
                           type='text'
-                          placeholder='Task 6'
+                          placeholder='Secondary Task'
                           name='task6'
                           {...register('task6', { required: false })}
                           onChange={changeHandler}
@@ -300,7 +294,7 @@ const App = () => {
                 </Form>
               </Col>
               <Col>
-                <Header allValues={allValues} />
+                <Header allValues={allValues} toggleValues={toggleValues} />
               </Col>
             </Row>
           </Container>
@@ -311,3 +305,5 @@ const App = () => {
 };
 
 export default App;
+
+/* <button onclick={clearValues}>Clear</button> */

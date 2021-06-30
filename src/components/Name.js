@@ -1,8 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, Col, Container, Row, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
-const Name = ({ singleValue }) => {
+const Name = ({ singleValue, toggleValues }) => {
+  const handleClick = () => {
+    toggleValues(singleValue.id);
+  };
+
   return (
     <div>
       <h3>{singleValue.name}</h3>
@@ -28,6 +32,13 @@ const Name = ({ singleValue }) => {
             <td>{singleValue.task6}</td>
           </tr>
         </tbody>
+        <input
+          type='checkbox'
+          checked={singleValue.complete}
+          onChange={handleClick}
+        ></input>{' '}
+        <br></br>
+        Completed
       </Table>
     </div>
   );
